@@ -41,8 +41,8 @@ const tabsAppender = (selector) => {
   .get('https://lambda-times-api.herokuapp.com/topics')
   .then((res) => {
     const array = res.data.topics;
-    const tab = document.querySelector(selector);
-    tab.appendChild(Tabs(array));
+    const location = document.querySelector(selector);
+    location.appendChild(Tabs(array));
 })
   .catch(console.log('Tab error'));
 };

@@ -58,11 +58,11 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 
-  const location = document.querySelector(selector);
   axios
     .get('https://lambda-times-api.herokuapp.com/articles')
     .then((res) => {
       const artArticles = res.data.articles
+      const location = document.querySelector(selector);
       Object.values(artArticles).forEach((i) => {
         Object.values(i).forEach((j) => {
           location.appendChild(Card(j))
