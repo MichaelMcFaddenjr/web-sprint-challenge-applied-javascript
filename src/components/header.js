@@ -1,8 +1,8 @@
 //Getting current date 
 var today = new Date();
-var dd = String(today.getDate()).padStart(2,'0');
-var mm = String(today.getMonth()).padStart(2,'0');
-var yyyy = String(today.getFullYear());
+const dd = String(today.getDate()).padStart(2,'0');
+const mm = String(today.getMonth()).padStart(2,'0');
+const yyyy = String(today.getFullYear());
 today = mm + '/' + dd + '/' + yyyy;
 console.log(mm);
 
