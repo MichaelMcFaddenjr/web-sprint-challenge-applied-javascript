@@ -23,6 +23,10 @@ const Card = (article) => {
   imgCont.appendChild(img)
   author.appendChild(authorName)
 
+  card.addEventListener('click', evt => {
+    console.log(article.headline)
+  })
+
   return card;
   // TASK 5
   // ---------------------
