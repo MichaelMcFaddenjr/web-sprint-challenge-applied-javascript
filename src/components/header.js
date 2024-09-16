@@ -1,4 +1,30 @@
+//Getting current date 
+var today = new Date();
+const dd = String(today.getDate()).padStart(2,'0');
+const mm = String(today.getMonth()).padStart(2,'0');
+const yyyy = String(today.getFullYear());
+today = mm + '/' + dd + '/' + yyyy;
+console.log(mm);
+
 const Header = (title, date, temp) => {
+  const headerDiv = document.createElement('div')
+  const headerDate = document.createElement('span')
+  const headerTitle = document.createElement('h1')
+  const headerTemp = document.createElement('span')
+  
+  headerDiv.classList.add('header')
+  headerDate.classList.add('date')
+  headerTemp.classList.add('temp')
+
+  headerDate.textContent = date
+  headerTitle.textContent = title
+  headerTemp.textContent = temp
+
+  headerDiv.appendChild(headerDate)
+  headerDiv.appendChild(headerTitle)
+  headerDiv.appendChild(headerTemp)
+
+  return headerDiv
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -11,9 +37,12 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+ 
 }
-
 const headerAppender = (selector) => {
+  const header = Header("Web 42 News", today, "101°F")
+  document.querySelector(selector).appendChild(header)
+
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.

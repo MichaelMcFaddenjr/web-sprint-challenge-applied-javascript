@@ -1,4 +1,33 @@
+import axios from "axios"
+
 const Card = (article) => {
+  const card = document.createElement('div')
+  const headline = document.createElement('div')
+  const author = document.createElement('div')
+  const imgCont = document.createElement('div')
+  const img = document.createElement('img')
+  const authorName = document.createElement('span')
+
+  card.classList.add('card')
+  headline.classList.add('headline')
+  author.classList.add('author')
+  imgCont.classList.add('img-container')
+
+  headline.textContent = article.headline
+  img.setAttribute('src', `${article.authorPhoto}`)
+  authorName.textContent = `By ${article.authorName}`
+
+  card.appendChild(headline)
+  card.appendChild(author)
+  author.appendChild(imgCont)
+  imgCont.appendChild(img)
+  author.appendChild(authorName)
+
+  card.addEventListener('click', evt => {
+    console.log(article.headline)
+  })
+
+  return card;
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -19,7 +48,22 @@ const Card = (article) => {
   //
 }
 
+const URL = 'https://lambda-times-api.herokuapp.com/articles';
+
 const cardAppender = (selector) => {
+  axios
+  .get(URL)
+  .then((res) => {
+    const articleCard = res.data.articles
+    Object.values(articleCard).forEach((element => {
+      Object.values(element).forEach((element2) => {
+        document.querySelector(selector).appendChild(Card(element2))
+      })
+    }))
+  })
+  .catch((err) => {
+    console.log('unable to fetch articles');
+  })
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
